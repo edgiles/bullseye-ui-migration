@@ -1,0 +1,73 @@
+<h2 id="styles">Changes to Bullseye Style repo and deployment</h2>
+<h3>Background</h3>
+<p>Overall, the styles repo and toolset are a good fit. We are, however, missing any kind of error-checking / linting for our Sass. Currently, error-checking is human — when a PR is being reviewed — and code-style isn't enforced at all. This can be tackled by implementing Stylelint in the dev and server envionments. This would allow for a strict coding style to be enforced, which would be very beneficial for daily development and new starters, as well as allowing us to tidy up our current codebase.</p>
+<p>We are currently hindered by having the Bullseye Style repo deployment coupled with that of the API. This path was taken due to the need for the API to compile the SCSS to CSS using white-label colors from the database, and logo assets from AWS. The stylesheets are then cached until such time as the base stylesheet changes, or WL data is updated. Ideally, app styles and the API should not touch one another <em>at all</em>.</p>
+<h3>Issues</h3>
+<ul>
+    <li>No separation of concerns; app styles are entwined with the API, including deployment (which feels weird and dirty)</li>
+    <li>Multiple stylesheets exist, one for each white label iteration of the platform</li>
+    <li>Extra legwork for the API to handle</li>
+    <li>Sometimes stylesheets are compiled at runtime, hence the need for our annoying 'fade-in' screen whenever a hard-reload is triggered. We are literally just waiting for a stylesheet in that time.</li>
+</ul>
+<h3>
+            Solutions
+        </h3>
+<p>Using CSS3 custom properties we can change colours in pre-loaded CSS, on-the-fly, via Javascript. This would be <em>far more sensible</em>:</p>
+<ul>
+    <li>Removes the need for a separate styles repo completely. All .scss files would live in the <code>src\css</code> folder (where they're supposed to be!); Styles are deployed with the UI, not API</li>
+    <li>A single global stylesheet exists for all iterations of the platform</li>
+    <li>Allow live colour changes in the UI using variables</li>
+    <li>Admedo brand colours are embedded in the stylesheet (via static Sass variables, still easy to change) and overridden for white labels at runtime.</li>
+    <li>Broadens the spectrum of usable colours. We can accurately calculate appropriate body text contrast based on background colour via JS. Now you CAN have that pure white navbar! :-D</li>
+</ul>
+<h3>
+            Live colour changes using variables
+        </h3>
+<p>Check it out for yrsel ;)</p>
+<div class="color-test-bar">
+    <input type="color"
+        value="#f6b73c"
+        id="choose-theme-color"><span>Click box & choose a colour :-p</span>
+    </p>
+</div>
+<h3>Notes</h3>
+<p>See: <a href="https://www.smashingmagazine.com/2018/05/css-custom-properties-strategy-guide/">https://www.smashingmagazine.com/2018/05/css-custom-properties-strategy-guide/</a>
+    <a href="https://medium.com/geckoboard-under-the-hood/how-we-made-our-product-more-personalized-with-css-variables-and-react-b29298fde608">https://medium.com/geckoboard-under-the-hood/how-we-made-our-product-more-personalized-with-css-variables-and-react-b29298fde608</a></p>
+<p>LOGOS! FE assets? how to do this? Look at other things above first.</p>
+<script>
+var colorInput = document.querySelector("#choose-theme-color");
+colorInput.addEventListener("change", function() {
+    document.documentElement.style.setProperty("--mainColor", this.value);
+    document.documentElement.style.setProperty("--textColor", getCorrectTextColor(this.value));
+});
+
+function getCorrectTextColor(hex) {
+    var threshold = 130;
+    var hRed = hexToR(hex);
+    var hGreen = hexToG(hex);
+    var hBlue = hexToB(hex);
+
+    function hexToR(h) {
+        return parseInt((cutHex(h)).substring(0, 2), 16)
+    }
+
+    function hexToG(h) {
+        return parseInt((cutHex(h)).substring(2, 4), 16)
+    }
+
+    function hexToB(h) {
+        return parseInt((cutHex(h)).substring(4, 6), 16)
+    }
+
+    function cutHex(h) {
+        return (h.charAt(0) == "#") ? h.substring(1, 7) : h
+    }
+
+    cBrightness = ((hRed * 299) + (hGreen * 587) + (hBlue * 114)) / 1000;
+    if (cBrightness > threshold) {
+        return "#000000";
+    } else {
+        return "#ffffff";
+    }
+}
+</script>

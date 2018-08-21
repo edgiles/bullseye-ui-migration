@@ -1,0 +1,182 @@
+<h2 id="infrastructure">Infrastructure migration table</h2>
+        <p>Bear in mind <i>none</i> of these tools are bleeding-edge. However they will all bring us up-to-date with current industry standards (and all the benefits associated).
+            <br>Moving to some of these tools will remove the need for multiple packages and plugins for single functionality, thereby consolidating the functionality of our FE infrastructure.
+        </p>
+        <table>
+            <tr>
+                <th>
+                    Functionality
+                </th>
+                <th>
+                    Current
+                </th>
+                <th>
+                    Proposed
+                </th>
+                <th>
+                    Benefits
+                </th>
+                <th>
+                    Current Version / Longevity
+                </th>
+                <th>
+                    License
+                </th>
+                <th class="nowrap">
+                    Est. Human Cost
+                </th>
+                <th>
+                    Comments
+                </th>
+            </tr>
+            <tr>
+                <td class="nowrap">Package Management</td>
+                <td class="nowrap">Bower 1.8.4
+                    <br>
+                    <br>NPM 2.15.8 (Node 4.4.7)</td>
+                <td class="proposed"><a href="//nodejs.org">NPM</a></td>
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            Bower has been deprecated by its creators
+                        </li>
+                        <li>
+                            Bower has a separate, smaller package ecosystem containing outdated versions of packages
+                        </li>
+                        <li>
+                            NPM Is a single place for all app & development packages
+                        </li>
+                        <li>
+                            NPM saves space, avoids dependency conflicts
+                        </li>
+                    </ul>
+                </td>
+                <td>NPM v6+ (Node v10+)
+                    <br>
+                    <br>Very much currently industry standard. Still being developed and maintained, has over 2K contributors.
+                    <br>
+                    <br><a href="https://github.com/ry">Ryan Dahl</a>, the creator of Node.js, is creating a new type of node using TypeScript
+                </td>
+                <td>OS</td>
+                <td></td>
+                <td>See: <a href="//snyk.io/blog/bower-is-dead">Bower is dead, long live npm. And Yarn. And webpack</a>
+                    <br>
+                    <br>Migration should ideally run alongside task-runner/bundler migration. If not, we can adapt Gulp tasks to leverage NPM packages instead of Bower ones.
+                </td>
+            </tr>
+            <tr>
+                <td class="nowrap">Task Runner / Bundler</td>
+                <td class="nowrap">Gulp 3.9.1</td>
+                <td class="proposed"><a href="//webpack.js.org">Webpack</a></td>
+                <td>
+                    <ul>
+                        <li>Removes need for large, potentially buggy Gulp tasks</li>
+                        <li>Webpack supports dev server, source-maps, minification, hot reloading natively</li>
+                        <li>Built to manage large-scale applications</li>
+                        <li>Webpack gives us a dependency graph, leveraging modular JS for dynamic loading (or 'Stop being a human compiler. Use a dependency graph.')</li>
+                        <li>Easy to configure ES6+ support</li>
+                        <li>Tree shaking (dead asset elimination)</li>
+                    </ul>
+                </td>
+                <td>
+                    v4+
+                    <br>
+                    <br>Webpack is maintained mostly by <a href="https://github.com/sokra">one person</a>, but is well respected (43K stars on Github), <a href="https://stackshare.io/webpack/in-stacks">used by big-hitters</a>, and the current industry standard bundler
+                </td>
+                <td>OS</td>
+                <td></td>
+                <td><a href="https://blog.andrewray.me/webpack-when-to-use-and-why/">Webpack: When To Use And Why</a></td>
+            </tr>
+            <tr class="alt-package">
+                <td></td>
+                <td></td>
+                <td class="proposed"><a href="//parceljs.org">ParcelJS</a></td>
+                <td>
+                    <ul>
+                        <li>Very simple config, quick to get up and running</li>
+                        <li>Lots of built-in goodness</li>
+                    </ul>
+                </td>
+                <td>v1.9.7
+                    <br>
+                    <br>The new kid on the block; _very_ easy to configure. Looks v exciting for the future, but still a little bit young compared to Webpack.
+                </td>
+                <td>OS</td>
+                <td></td>
+                <td>See: <a href="http://tinyurl.com/y85d9s93">If you’ve ever configured Webpack, Parcel will blow your mind!</a></td>
+            </tr>
+            <tr>
+                <td class="nowrap">Testing
+                    <br>(Unit, Integration, Coverage)</td>
+                <td class="nowrap">Karma 1.7.1
+                    <br>
+                    <br>Mocha 3.5.3 (Sinon, Chai)</td>
+                <td class="proposed"><a href="//jestjs.io">Jest</a></td>
+                <td>
+                    <ul>
+                        <li>Minimal setup & configuration</li>
+                        <li>Native assertion library and mocking support, as well as chai support</li>
+                        <li>Does away with the need for multiple dodgy plugins</li>
+                        <li>Good IDE integration</li>
+                    </ul>
+                </td>
+                <td>v23.3
+                    <br>
+                    <br>Created by Facebook. Still under active development. Another 'new kid' compared to what we currently use, but being adopted fast due to it's benefits over older frameworks.
+                </td>
+                <td>OS</td>
+                <td></td>
+                <td>See: <a href="http://tinyurl.com/ybpx2p6e">An Overview of JavaScript Testing in 2018</a></td>
+            </tr>
+            <tr>
+                <td class="nowrap">Testing
+                    <br>(E2E)</td>
+                <td class="nowrap">Protractor 3.3.0</td>
+                <td class="proposed"><a href="//devexpress.github.io/testcafe">TestCafe</a></td>
+                <td>
+                    <ul>
+                        <li>No plugins - does everything out of the box</li>
+                        <li>Built-in test recorder for test script generation</li>
+                        <li>Compatible with all known CIs</li>
+                        <li>Great analysis tools and reports</li>
+                    </ul>
+                </td>
+                <td>v0.21.1
+                    <br>
+                    <br> Ok - so it's a bit youthful. Everywhere you turn, people recommend using this tool due to it's simple setup, syntax and test recorder. Definitely worth looking into.
+                </td>
+                <td>OS</td>
+                <td></td>
+                <td>See: <a href="https://www.sitepoint.com/testcafe-easier-end-end-web-app-testing-node-js/">TestCafe: Easier End-to-end Web App Testing with Node.js</a></td>
+            </tr>
+            <tr>
+                <td class="nowrap">Linting / Error Checking</td>
+                <td class="nowrap">JShint 2.9.4
+                    <br>
+                    <br>JSCS 1.13.1</td>
+                <td class="proposed"><a href="//eslint.org">ESLint</a></td>
+                <td>
+                    <ul>
+                        <li>ESLint: Simple configuration and output</li>
+                        <li>Good ES6 & React Support</li>
+                        <li>Combines code style and error checking</li>
+                        <li>Highly configurable</li>
+                        <li>JSHint: confusing rules!</li>
+                        <li>Basic ES6 support, no React support</li>
+                        <li>JSCS code style checker only</li>
+                    </ul>
+                </td>
+                <td>v5.4.0
+                    <br>
+                    <br> Now industry standard linter. Great support across the board. Actively maintained and growing.
+                </td>
+                <td>OS</td>
+                <td></td>
+                <td>See: <a href="https://objectcomputing.com/resources/publications/sett/january-2017-eslint-dont-write-javascript-without-it/">ESLINT, DON'T WRITE JAVASCRIPT WITHOUT IT!</a></td>
+            </tr>
+        </table>
+        <h3>Notes</h3>
+        <p><em>TrackJS:</em> After a bit of investigation, there is one reasonable competitor in the error-tracking market, <a href="https://sentry.io/welcome/">Sentry</a></p>
+        <p>The basic plan is free, but doesn't provide the features we have with TrackJS ($49p/m), although Sentry's cheapest plan($26p/m) does seem to, and offers better data retention than TrackJS (90 days vs 14 days). They do have a slightly weird 'per-error' billing structure, but we don't get near enough errors to go over the line… currently.</p>
+        <p>If finance is an issue here, we could move over. Personal preference would be to stay where we are. TrackJS supports everything we need right now, and can support other frameworks just as easily. Feels like a move sideways.</p>
