@@ -26,14 +26,18 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: npm install
+      - ? run
+        name: Install dependancies
+        command: npm install
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm run build
+      - ? run
+        name: Build with Parcel
+        command: npm run build
 
       - save_cache:
           paths:
@@ -51,14 +55,14 @@ jobs:
           command: |
             scp -r -v -oStrictHostKeyChecking=no dist/* $SSH_USER@$SSH_HOST:/var/customers/webs/ededited/admedo.edgiles.co.uk/
 
-# workflows:
-#   version: 2
-#   build-and-deploy:
-#     jobs:
-#       - build
-#       - deploy:
-#           requires:
-#             - build
-#           filters:
-#             branches:
-#               only: master
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
