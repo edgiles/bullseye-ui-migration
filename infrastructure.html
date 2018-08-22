@@ -1,5 +1,33 @@
-<h2 id="infrastructure">Infrastructure migration table</h2>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+        content="ie=edge">
+    <title>Arch. / Inf. Migration on the FE</title>
+    <link rel="stylesheet"
+        href="./style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Bullseye: Architecture & Infrastructure Migration on the FE</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Mission</a></li>
+                <li><a href="./infrastructure.html">Infrastructure</a></li>
+                <li><a href="./application.html">Application</a></li>
+                <li><a href="./libraries.html">Libraries</a></li>
+                <li><a href="./styles.html">Styles</a></li>
+                <li><a href="./cleanup.html">Cleanup</a></li>
+            </ul>
+        </nav>
+        <h2 id="infrastructure">Infrastructure migration table</h2>
         <p>Bear in mind <i>none</i> of these tools are bleeding-edge. However they will all bring us up-to-date with current industry standards (and all the benefits associated).
+            <br>
             <br>Moving to some of these tools will remove the need for multiple packages and plugins for single functionality, thereby consolidating the functionality of our FE infrastructure.
         </p>
         <table>
@@ -14,7 +42,7 @@
                     Proposed
                 </th>
                 <th>
-                    Benefits
+                    Benefits / Drawbacks
                 </th>
                 <th>
                     Current Version / Longevity
@@ -38,17 +66,13 @@
                 </td>
                 <td>
                     <ul>
-                        <li>
-                            Bower has been deprecated by its creators
+                        <li><span class="check">✓</span> Bower has been deprecated by its creators
                         </li>
-                        <li>
-                            Bower has a separate, smaller package ecosystem containing outdated versions of packages
+                        <li><span class="check">✓</span> Bower has a separate, smaller package ecosystem containing outdated versions of packages
                         </li>
-                        <li>
-                            NPM Is a single place for all app & development packages
+                        <li><span class="check">✓</span> NPM Is a single place for all app & development packages
                         </li>
-                        <li>
-                            NPM saves space, avoids dependency conflicts
+                        <li><span class="check">✓</span> NPM saves space, avoids dependency conflicts
                         </li>
                     </ul>
                 </td>
@@ -71,12 +95,15 @@
                 <td class="proposed"><a href="//webpack.js.org">Webpack</a></td>
                 <td>
                     <ul>
-                        <li>Removes need for large, potentially buggy Gulp tasks</li>
-                        <li>Webpack supports dev server, source-maps, minification, hot reloading natively</li>
-                        <li>Built to manage large-scale applications</li>
-                        <li>Webpack gives us a dependency graph, leveraging modular JS for dynamic loading (or 'Stop being a human compiler. Use a dependency graph.')</li>
-                        <li>Easy to configure ES6+ support</li>
-                        <li>Tree shaking (dead asset elimination)</li>
+                        <li><span class="check">✓</span> Built to manage large-scale applications</li>
+                        <li><span class="check">✓</span> Highly configurable</li>
+                        <li><span class="check">✓</span> Removes need for large, potentially buggy Gulp tasks</li>
+                        <li><span class="check">✓</span> Webpack supports dev server, source-maps, minification, hot reloading natively</li>
+                        <li><span class="check">✓</span> Webpack gives us a dependency graph, leveraging modular JS for dynamic loading (or 'Stop being a human compiler. Use a dependency graph.')</li>
+                        <li><span class="check">✓</span> Full ES6+ support</li>
+                        <li><span class="check">✓</span> Tree shaking (dead asset elimination)</li>
+                        <li><span class="check">✓</span> Webpack 4 requires much less configuration than its predecessors</li>
+                        <li><span class="neg">✗</span> Configuration is known to be tricky</li>
                     </ul>
                 </td>
                 <td>
@@ -86,7 +113,13 @@
                 </td>
                 <td>OS</td>
                 <td></td>
-                <td><a href="https://blog.andrewray.me/webpack-when-to-use-and-why/">Webpack: When To Use And Why</a></td>
+                <td><a href="https://survivejs.com/webpack/what-is-webpack/">What is Webpack</a>
+                    <br>
+                    <br>
+                    <a href="https://blog.andrewray.me/webpack-when-to-use-and-why/">Webpack: When To Use And Why</a>
+                    <br>
+                    <br> Some cautionary info: <a href="https://medium.com/@allanbaptista/the-problem-with-webpack-8a025268a761">The Problem with Webpack and Why It Is (Kind of) Our Fault</a>
+                </td>
             </tr>
             <tr class="alt-package">
                 <td></td>
@@ -94,17 +127,24 @@
                 <td class="proposed"><a href="//parceljs.org">ParcelJS</a></td>
                 <td>
                     <ul>
-                        <li>Very simple config, quick to get up and running</li>
-                        <li>Lots of built-in goodness</li>
+                        <li><span class="check">✓</span> Very simple config, quick to get up and running</li>
+                        <li><span class="check">✓</span> Lots of built-in goodness</li>
+                        <li><span class="neg">✗</span> Documentation is a bit skinny :-/</li>
+                        <li><span class="neg">✗</span> 'config-free' could mean barriers to framework/build tweeking</li>
                     </ul>
                 </td>
                 <td>v1.9.7
                     <br>
-                    <br>The new kid on the block; _very_ easy to configure. Looks v exciting for the future, but still a little bit young compared to Webpack.
+                    <br>The new kid on the block; <em>very</em> easy to configure. Looks exciting for the future, but maybe still not mature enough (v1 released 5 Dec 2017).
+                    <br>
+                    <br> I'm unable to find much in the way of major issues, however, only a lot of positive articles
                 </td>
                 <td>OS</td>
                 <td></td>
-                <td>See: <a href="http://tinyurl.com/y85d9s93">If you’ve ever configured Webpack, Parcel will blow your mind!</a></td>
+                <td>See: <a href="http://tinyurl.com/y85d9s93">If you’ve ever configured Webpack, Parcel will blow your mind!</a>
+                    <br>
+                    <br>
+                    <a href="https://scotch.io/tutorials/a-zero-configuration-module-bundler-meet-parcel">A Zero Configuration Module Bundler -- Meet Parcel</a></td>
             </tr>
             <tr>
                 <td class="nowrap">Testing
@@ -115,10 +155,13 @@
                 <td class="proposed"><a href="//jestjs.io">Jest</a></td>
                 <td>
                     <ul>
-                        <li>Minimal setup & configuration</li>
-                        <li>Native assertion library and mocking support, as well as chai support</li>
-                        <li>Does away with the need for multiple dodgy plugins</li>
-                        <li>Good IDE integration</li>
+                        <li><span class="check">✓</span> Minimal setup & configuration</li>
+                        <li><span class="check">✓</span> <a href="https://medium.com/airbnb-engineering/unlocking-test-performance-migrating-from-mocha-to-jest-2796c508ec50">Speed bonuses</a></li>
+                        <li><span class="check">✓</span> Native assertion library and mocking support, as well as <a href="https://jestjs.io/docs/en/migration-guide">chai support</a></li>
+                        <li><span class="check">✓</span> Does away with the need for multiple dodgy plugins</li>
+                        <li><span class="check">✓</span> Good IDE integration</li>
+                        <li><span class="check">✓</span> Watch mode (awesome)</li>
+                        <li><span class="check">✓</span> Good adoption rate, <a href="https://stackshare.io/stackups/jasmine-vs-jest-vs-mocha">compares favorably with competitors</a></li>
                     </ul>
                 </td>
                 <td>v23.3
@@ -136,10 +179,10 @@
                 <td class="proposed"><a href="//devexpress.github.io/testcafe">TestCafe</a></td>
                 <td>
                     <ul>
-                        <li>No plugins - does everything out of the box</li>
-                        <li>Built-in test recorder for test script generation</li>
-                        <li>Compatible with all known CIs</li>
-                        <li>Great analysis tools and reports</li>
+                        <li><span class="check">✓</span> No plugins - does everything out of the box</li>
+                        <li><span class="check">✓</span> Built-in test recorder for test script generation</li>
+                        <li><span class="check">✓</span> Compatible with all known CIs</li>
+                        <li><span class="check">✓</span> Great analysis tools and reports</li>
                     </ul>
                 </td>
                 <td>v0.21.1
@@ -158,13 +201,12 @@
                 <td class="proposed"><a href="//eslint.org">ESLint</a></td>
                 <td>
                     <ul>
-                        <li>ESLint: Simple configuration and output</li>
-                        <li>Good ES6 & React Support</li>
-                        <li>Combines code style and error checking</li>
-                        <li>Highly configurable</li>
-                        <li>JSHint: confusing rules!</li>
-                        <li>Basic ES6 support, no React support</li>
-                        <li>JSCS code style checker only</li>
+                        <li><span class="check">✓</span> Simple configuration and output</li>
+                        <li><span class="check">✓</span> Good ES6 & React Support</li>
+                        <li><span class="check">✓</span> Combines code style and error checking</li>
+                        <li><span class="check">✓</span> Highly configurable</li>
+                        <li><span class="check">✓</span> JSHint: confusing rules!</li>
+                        <li><span class="check">✓</span> JSHint: Basic ES6 support, no React support</li>
                     </ul>
                 </td>
                 <td>v5.4.0
@@ -180,3 +222,7 @@
         <p><em>TrackJS:</em> After a bit of investigation, there is one reasonable competitor in the error-tracking market, <a href="https://sentry.io/welcome/">Sentry</a></p>
         <p>The basic plan is free, but doesn't provide the features we have with TrackJS ($49p/m), although Sentry's cheapest plan($26p/m) does seem to, and offers better data retention than TrackJS (90 days vs 14 days). They do have a slightly weird 'per-error' billing structure, but we don't get near enough errors to go over the line… currently.</p>
         <p>If finance is an issue here, we could move over. Personal preference would be to stay where we are. TrackJS supports everything we need right now, and can support other frameworks just as easily. Feels like a move sideways.</p>
+    </div>
+</body>
+
+</html>

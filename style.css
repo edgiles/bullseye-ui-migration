@@ -101,6 +101,7 @@ table ul {
     margin: 0;
     padding: 0;
     font-size: inherit;
+    list-style-type: none;
 }
 
 table ul li {
@@ -183,4 +184,16 @@ pre {
     line-height: 1.45;
     background-color: #f6f8fa;
     border-radius: 3px;
+}
+
+.check {
+    font-size: 1em;
+    color: green;
+    margin-left: -1em;
+}
+
+.neg {
+    font-size: 1.2em;
+    color: red;
+    margin-left: -1em;
 }

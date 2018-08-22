@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+        content="ie=edge">
+    <title>Arch. / Inf. Migration on the FE</title>
+    <link rel="stylesheet"
+        href="./style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Bullseye: Architecture & Infrastructure Migration on the FE</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Mission</a></li>
+                <li><a href="./infrastructure.html">Infrastructure</a></li>
+                <li><a href="./application.html">Application</a></li>
+                <li><a href="./libraries.html">Libraries</a></li>
+                <li><a href="./styles.html">Styles</a></li>
+                <li><a href="./cleanup.html">Cleanup</a></li>
+            </ul>
+        </nav>
+        <h2 id="application">Application migration table</h2>
+        <p>Frameworks for consideration.
+        </p>
+        <p>It's important to bear in mind that a move towards <em>any</em> of the frameworks below will require infrastructure changes to support it, as well as changes to the codebase to support modern modular Javascript. All of them work with NPM & Webpack. Without this initial legwork, we cannot move.</p>
+        <p>Sizing up exactly which of these frameworks is the right fit for us is a tricky endevour, and I'd really require more dedicated time to evaluate exactly which is the winner.</p>
+        <p>For basic speed comparisons, <a href="https://www.stefankrause.net/js-frameworks-benchmark7/table.html">go here</a> and filter!</p>
+        <table>
+            <tr>
+                <th>
+                    Functionality
+                </th>
+                <th>
+                    Current
+                </th>
+                <th>
+                    Proposed
+                </th>
+                <th>
+                    Benefits
+                </th>
+                <th>
+                    Current Version / Longevity
+                </th>
+                <th>
+                    License
+                </th>
+                <th class="nowrap">
+                    Est. Human Cost
+                </th>
+                <th>
+                    Comments
+                </th>
+            </tr>
+            <tr>
+                <td>Application Framework</td>
+                <td class="nowrap">AngularJS 1.5</td>
+                <td class="proposed"><a href="//reactjs.org">React</a></td>
+                <td>
+                    <ul>
+                        <li><span class="check">✓</span> Emphasis on code and component reuse</li>
+                        <li><span class="check">✓</span> Declarative. Handles state v nicely - and separately from components</li>
+                        <li><span class="check">✓</span> Industry standard for large apps</li>
+                        <li><span class="check">✓</span> Uses 'Virtual DOM' that updates only the elements required, alleviating performance issues</li>
+                        <li><span class="check">✓</span> Speed; significantly faster that AngularJS when dealing with large amounts of data and complex views</li>
+                        <li><span class="check">✓</span> BIG ecosystem. Many up-to-date, maintained, top quality plugins. Lots of support, examples, training content etc etc.</li>
+                        <li><span class="check">✓</span> One-way data flow. Single source of truth</li>
+                        <li><span class="check">✓</span> Emphasis on functional programming rather than OOP</li>
+                        <li><span class="check">✓</span> 'Personnelle resourcing' would be somewhat easier</li>
+                        <li><span class="neg">✗</span> (subjective) Uses JSX as it's view templating system. <em>I don't really like JSX</em>. It lives inside .js files, changes standard HTML tag naming and paradigms, and is just plain weird.</li>
+                        <li><span class="neg">✗</span> Entirely new framework with different architecture and methodology to AngularJS</li>
+                    </ul>
+                </td>
+                <td>v16+
+                    <br>
+                    <br>
+                </td>
+                <td>OS</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="alt-package">
+                <td></td>
+                <td></td>
+                <td class="proposed"><a href="//angular.io">Angular</a></td>
+                <td>
+                    <ul>
+                        <li><span class="check">✓</span> Familiar (but different) territory</li>
+                        <li><span class="check">✓</span> Great speed imporvements over AngularJS</li>
+                        <li><span class="check">✓</span> Better, modular dependency handling</li>
+                        <li><span class="check">✓</span> One-way data flow. Single source of truth</li>
+                        <li><span class="check">✓</span> Built with mobile support in mind</li>
+                        <li><span class="check">✓</span> Primary language is Typescript. <a href="https://www.techtalko.com/2018/03/17/typescript-the-future-of-javascript/">Typescript is pretty amazing</a></li>
+                        <li><span class="neg">✗</span> Primary language is Typescript. ES5 equivalent code is extremely verbose and awkward, most of Angular2+ tutorials are written in typescript. Requires learning Typescript</li>
+                        <li><span class="neg">✗</span> 'Integration' means wrapping our current app <em>inside</em> an Angular 5/6 app and converting a lot of code, rather than gradual introduction</li>
+                        <li><span class="neg">✗</span> More complicated setup than AngularJS, but perhaps no more than React</li>
+                        <li><span class="neg">✗</span> Can still be slow when displaying enormous amounts of data, but much closer to the same bottlenecks in React than AngularJS</li>
+                    </ul>
+                </td>
+                <td>v6
+                    <br>
+                    <br>One major barrier might be that Angular uses Typescript natively, meaning a pretty steep new learning curve on top of architecture refactoring.
+                </td>
+                <td>OS</td>
+                <td></td>
+                <td>See: <a href="https://medium.com/sv-blog/running-angularjs-1-6-in-angular-5-side-by-side-d2ed771e2a8f">Running AngularJS 1.6 in Angular 5
+                </a></td>
+            </tr>
+            <tr class="alt-package">
+                <td></td>
+                <td></td>
+                <td class="proposed"><a href="//vuejs.org">Vue.js</a></td>
+                <td>
+                    <ul>
+                        <li><span class="check">✓</span> Learning Curve; super-simple compared to React/Angular</li>
+                        <li><span class="check">✓</span> Amazing documentation</li>
+                        <li><span class="check">✓</span> Fast</li>
+                        <li><span class="check">✓</span> Clean, lean, concise codebase</li>
+                        <li><span class="check">✓</span> No JSX — React's version of view templates. (It's not very nice IMO)</li>
+                        <li><span class="check">✓</span> Can gradually, iteratively migrate from AJS to Vue.js</li>
+                        <li><span class="neg">✓</span> Less features and less powerful than React/Angular</li>
+                        <li><span class="neg">✓</span> Considered best for small-medium apps</li>
+                    </ul>
+                </td>
+                <td>v2.5.17
+                    <br>
+                    <br> <em>Very</em> popular, growing at an insane rate.
+                    <br>
+                    <br>It could transpire that Vue.js may not be powerful enough to deliver our applicaitons needs. I would need to look at some real-world equivalents of fucntionality to find out.
+                </td>
+                <td>OS</td>
+                <td></td>
+                <td>See:
+                    <a href="https://vuejs.org/v2/guide/comparison.html">Vue.js: Comparison with Other Frameworks</a>
+                    <br>
+                    <br>
+                    <a href="https://www.holistics.io/blog/why-and-how-we-migrated-from-angularjs-to-vuejs/">Why and How We Migrated from AngularJS to VueJS</a>
+                    <br>
+                    <br>
+                    <a href="https://hackernoon.com/debate-vuejs-vs-reactjs-9d2a8867b69b">Debate: VueJS vs. ReactJS</a>
+                    <br>
+                    <br><a href="https://medium.com/@TechMagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d">ReactJS vs Angular5 vs Vue.js — What to choose in 2018?</a></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

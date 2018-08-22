@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+        content="ie=edge">
+    <title>Arch. / Inf. Migration on the FE</title>
+    <link rel="stylesheet"
+        href="./style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Bullseye: Architecture & Infrastructure Migration on the FE</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Mission</a></li>
+                <li><a href="./infrastructure.html">Infrastructure</a></li>
+                <li><a href="./application.html">Application</a></li>
+                <li><a href="./libraries.html">Libraries</a></li>
+                <li><a href="./styles.html">Styles</a></li>
+                <li><a href="./cleanup.html">Cleanup</a></li>
+            </ul>
+        </nav>
+        <h2 id="libraries">Library migration table</h2>
+        <p>This table includes replacements for libs curently in-use, and new introductions. These are the areas where I feel the app needs focus / updating. Exploration of solutions will be better made when our core framework has been considered.
+        </p>
+        <table>
+            <tr>
+                <th>
+                    Functionality
+                </th>
+                <th>
+                    Current
+                </th>
+                <th>
+                    Proposed
+                </th>
+                <th>
+                    Benefits
+                </th>
+                <th>
+                    Current Version / Longevity
+                </th>
+                <th>
+                    License
+                </th>
+                <th class="nowrap">
+                    Est. Human Cost
+                </th>
+                <th>
+                    Comments
+                </th>
+            </tr>
+            <tr>
+                <td>Tables</td>
+                <td class="nowrap">"stableTable": in-house table solution</td>
+                <td class="proposed">React: <a href="//react-table.js.org">ReactTable</a>
+                    <br>
+                    <br> Angular: <a href="http://swimlane.github.io/ngx-datatable/">ngx-datatable</a></td>
+                <td>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </td>
+                <td>v6.8.5
+                    <br>
+                    <br> v13.1.0
+                </td>
+                <td>OS</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Maps</td>
+                <td class="nowrap">Angular Google Maps 2.4 (Google Maps API wrapper)</td>
+                <td class="proposed">React: <a href="https://tomchentw.github.io/react-google-maps/">React Google Maps</a>
+                    <br>
+                    <br> Angular: <a href="//angular-maps.com"></a>Angular Maps</td>
+                <td>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </td>
+                <td>v16+
+                    <br>
+                    <br>
+                </td>
+                <td>OS</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Report charts</td>
+                <td class="nowrap">D3-based in-house solution</td>
+                <td class="proposed"><a href="//"></a></td>
+                <td>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </td>
+                <td>v16+
+                    <br>
+                    <br>
+                </td>
+                <td>OS</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Notifications</td>
+                <td class="nowrap">none<em> (explicitly requested / long poll only)</em></td>
+                <td class="proposed"><a href="//"></a></td>
+                <td>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </td>
+                <td>v16+
+                    <br>
+                    <br>
+                </td>
+                <td>OS</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Icons</td>
+                <td class="nowrap">FontAwesome</td>
+                <td class="proposed"><a href="//">FontAwesome5</a></td>
+                <td>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </td>
+                <td>v16+
+                    <br>
+                    <br>
+                </td>
+                <td>OS</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
